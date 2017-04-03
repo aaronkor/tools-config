@@ -1,0 +1,15 @@
+[core]
+	autocrlf = true
+	excludesfile = gitignore_global.txt
+[user]
+	name = Aaron Kor
+	email = aaron.kor@gmail.com
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short --decorate
+	lsalias = config --get-regexp alias
