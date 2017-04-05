@@ -1,0 +1,42 @@
+set nobackup
+set noswapfile
+
+syntax on
+filetype plugin indent on
+
+set number
+set ruler
+set visualbell
+set encoding=utf-8
+set wrap
+set textwidth=79
+set formatoptions=tcqrn1
+
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set noshiftround
+
+if has("gui_running")
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""
+  " vim plug
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""
+  call plug#begin('~/.vim/plugged')
+  Plug 'bling/vim-airline'
+  Plug 'tomasiser/vim-code-dark'      "(colorscheme codedark)
+  Plug 'altercation/solarized'
+  Plug 'scrooloose/nerdtree'
+  Plug 'tpope/vim-surround'
+  Plug 'alvan/vim-closetag'
+  call plug#end()
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""
+  
+  autocmd vimenter * NERDTree               "show tree on startup
+  let NERDTreeShowHidden=1                  "show hidden files
+  let g:closetag_filenames = "*.html,*.xml" "setup closetag plugin
+  
+  set guifont=Consolas:h14:cANSI
+  set background=dark
+  colorscheme codedark
+endif
