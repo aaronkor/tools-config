@@ -28,6 +28,7 @@ if empty(glob("~/.vim/autoload/plug.vim"))
   :echom 'VIM Plug not found!'
   :echom 'Make sure the following path exists: ~/.vim/autoload/plug.vim'
 else
+  source ~/.vim/autoload/plug.vim
   call plug#begin('~/.vim/plugged')
     
     "Airline
