@@ -29,21 +29,37 @@ if empty(glob("~/.vim/autoload/plug.vim"))
   :echom 'Make sure the following path exists: ~/.vim/autoload/plug.vim'
 else
   call plug#begin('~/.vim/plugged')
-  Plug 'bling/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-  Plug 'tomasiser/vim-code-dark'
-  Plug 'scrooloose/nerdtree'
-  Plug 'scrooloose/nerdcommenter'
-  Plug 'tpope/vim-surround'
-  Plug 'alvan/vim-closetag'
-  Plug 'raimondi/delimitmate'
+    
+    "Airline
+    Plug 'bling/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    
+    "Colorschemes
+    Plug 'jnurmine/zenburn'
+    Plug 'morhetz/gruvbox'
+    Plug 'tomasiser/vim-code-dark'
+    "Plug 'altercation/vim-colors-solarized'
+    "set rtp+=~/.vim/plugged/vim-colors-solarized
+
+    "NERDTre
+    Plug 'scrooloose/nerdtree'
+    Plug 'scrooloose/nerdcommenter'
+
+    "Code & Text
+    Plug 'tpope/vim-surround'
+    Plug 'alvan/vim-closetag'
+    Plug 'raimondi/delimitmate'
   call plug#end()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
   autocmd vimenter * NERDTree               "show tree on startup
   let NERDTreeShowHidden=1                  "show hidden files
   let g:closetag_filenames = "*.html,*.xml" "setup closetag plugin
   
+  "Setup the colorscheme, font etc.
   set guifont=Consolas:h14:cANSI
-  set background=dark
-  colorscheme codedark
+  "set background=light
+  let g:zenburn_high_Contrast=1
+  colorscheme zenburn
 endif "end of vim plug
