@@ -31,6 +31,13 @@ function! SetupAirline()
   let g:airline#extensions#syntastic#enabled = 1
 endfunction
 
+function! SetupNERD()
+  if has('gui_running')
+    autocmd vimenter * NERDTree               "show tree on startup
+  endif
+  let NERDTreeShowHidden = 1                  "show hidden files
+endfunction
+
 function! SetupSyntastic()
   set statusline+=%#warningmsg#
   set statusline+=%{SyntasticStatuslineFlag()}
@@ -82,11 +89,11 @@ else
     "NERDTree
     Plug 'scrooloose/nerdtree'
     Plug 'scrooloose/nerdcommenter'
-
+    call SetupNERD()
     "Code & Text
     Plug 'tpope/vim-surround'
     "Plug 'alvan/vim-closetag'
-    Plug 'aaronkor/vim-closetag', {'branch': 'case-sensitive-option'}
+    Plug 'aaronkor/vim-closetag'
     call SetupClosetag()
     Plug 'raimondi/delimitmate'
     call SetupDelimitmate()
@@ -100,9 +107,6 @@ else
 
   call plug#end()
 
-
-  autocmd vimenter * NERDTree               "show tree on startup
-  let NERDTreeShowHidden = 1                  "show hidden files
   let g:jsx_ext_required = 0                "jsx syntax for .js files
   
   "Setup the colorscheme
