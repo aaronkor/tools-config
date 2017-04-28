@@ -25,6 +25,9 @@ set noshiftround
 " Functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 function! SetupAirline()
+  Plug 'bling/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+
   set laststatus=2
   let g:airline#extensions#tabline#enabled = 1 
   let g:airline#extensions#syntastic#enabled = 1
@@ -55,6 +58,7 @@ endfunction
 function! SetupDelimitmate()
   let g:delimitMate_expand_cr = 2
   let g:delimitMate_expand_space = 1
+  let g:delimitMate_matchpairs = "(:),[:],{:}"
 endfunction
 
 function! SetupClosetag()
@@ -75,8 +79,6 @@ else
   call plug#begin('~/.vim/plugged')
     
     "Airline
-    Plug 'bling/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
     call SetupAirline()
     
     "Colorschemes
@@ -93,7 +95,6 @@ else
     call SetupNERD()
     "Code & Text
     Plug 'tpope/vim-surround'
-    "Plug 'alvan/vim-closetag'
     Plug 'aaronkor/vim-closetag'
     call SetupClosetag()
     Plug 'raimondi/delimitmate'
