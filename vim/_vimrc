@@ -11,7 +11,6 @@ set number
 set ruler
 set visualbell
 set encoding=utf-8
-"set wrap
 set textwidth=80
 set colorcolumn=+1
 set formatoptions=tcqrn1
@@ -33,9 +32,10 @@ endfunction
 
 function! SetupNERD()
   if has('gui_running')
-    autocmd vimenter * NERDTree               "show tree on startup
+    autocmd vimenter * NERDTree             "show tree on startup
   endif
-  let NERDTreeShowHidden = 1                  "show hidden files
+  map <C-n> :NERDTreeToggle<CR>             "map toggle to Ctr+n
+  let NERDTreeShowHidden=1                  "show hidden files
 endfunction
 
 function! SetupSyntastic()
@@ -89,6 +89,7 @@ else
     "NERDTree
     Plug 'scrooloose/nerdtree'
     Plug 'scrooloose/nerdcommenter'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
     call SetupNERD()
     "Code & Text
     Plug 'tpope/vim-surround'
@@ -122,3 +123,7 @@ endif
 " font
 set guifont=Consolas:h14:cANSI
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"  Key Mappings 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent><expr> <f2> ':set wrap! go'.'-+'[&wrap]."=b\r"
