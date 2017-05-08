@@ -34,6 +34,9 @@ function! SetupAirline()
 endfunction
 
 function! SetupNERD()
+  Plug 'scrooloose/nerdtree'
+  Plug 'scrooloose/nerdcommenter'
+
   if has('gui_running')
     autocmd vimenter * NERDTree             "show tree on startup
   endif
@@ -42,6 +45,8 @@ function! SetupNERD()
 endfunction
 
 function! SetupSyntastic()
+  Plug 'vim-syntastic/syntastic'
+
   set statusline+=%#warningmsg#
   set statusline+=%{SyntasticStatuslineFlag()}
   set statusline+=%*
@@ -56,18 +61,30 @@ function! SetupSyntastic()
 endfunction
 
 function! SetupDelimitmate()
+  Plug 'raimondi/delimitmate'
   let g:delimitMate_expand_cr = 2
   let g:delimitMate_expand_space = 1
   let g:delimitMate_matchpairs = "(:),[:],{:}"
 endfunction
 
 function! SetupClosetag()
+  Plug 'aaronkor/vim-closetag'
+
   let g:closetag_filenames = "*.html,*.xml,*.js,*.jsx" "setup closetag plugin
   let g:closetag_emptyTags_caseSensitive = 1
 endfunction
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! SetupJsx()
+  Plug 'mxw/vim-jsx'
+endfunction
 
+function! SetupVimSurround()
+  Plug 'tpope/vim-surround'
+endfunction
+
+function! SetupFugitive()
+  Plug 'tpope/vim-fugitive'
+endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 "     vim plug
@@ -77,10 +94,9 @@ if empty(glob("~/.vim/autoload/plug.vim"))
   :echom 'Make sure the following path exists: ~/.vim/autoload/plug.vim'
 else
   call plug#begin('~/.vim/plugged')
-    
-    "Airline
     call SetupAirline()
-    
+    call SetupNERD()
+
     "Colorschemes
     Plug 'jnurmine/zenburn'
     Plug 'morhetz/gruvbox'
@@ -88,25 +104,15 @@ else
     "Plug 'altercation/vim-colors-solarized'
     "set rtp+=~/.vim/plugged/vim-colors-solarized
 
-    "NERDTree
-    Plug 'scrooloose/nerdtree'
-    Plug 'scrooloose/nerdcommenter'
     Plug 'Xuyuanp/nerdtree-git-plugin'
-    call SetupNERD()
     "Code & Text
-    Plug 'tpope/vim-surround'
-    Plug 'aaronkor/vim-closetag'
     call SetupClosetag()
-    Plug 'raimondi/delimitmate'
     call SetupDelimitmate()
-    Plug 'pangloss/vim-javascript'
-    Plug 'mxw/vim-jsx'
-    Plug 'vim-syntastic/syntastic'
     call SetupSyntastic()
-
-    "Git Integration
-    Plug 'tpope/vim-fugitive'
-
+    call SetupJsx()
+    call SetupVimSurround()
+    call SetupFugitive()
+    Plug 'pangloss/vim-javascript'
   call plug#end()
 
   let g:jsx_ext_required = 0                "jsx syntax for .js files
