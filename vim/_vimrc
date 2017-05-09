@@ -12,7 +12,11 @@ set ruler
 set visualbell
 set encoding=utf-8
 set textwidth=80
-set colorcolumn=+1
+
+if has('gui_running')
+  set colorcolumn=+1
+endif
+
 set formatoptions=tcqrn1
 
 set tabstop=2
@@ -134,3 +138,4 @@ set guifont=Consolas:h14:cANSI
 "  Key Mappings 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <silent><expr> <f2> ':set wrap! go'.'-+'[&wrap]."=b\r"
+
