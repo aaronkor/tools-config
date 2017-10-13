@@ -5,23 +5,27 @@
 	name = Aaron Kor
 	email = aaron.kor@gmail.com
 [alias]
-	co = checkout
+  co = checkout
+  cob = co -b
 	br = branch
 	ci = commit
-	st = status
+  st = status
+  puff = pull --ff-only
+  meff = merge --ff-only
 	unstage = reset HEAD --
 	last = log -1 HEAD
 	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short --decorate
   lsalias = config --get-regexp alias
+  reset-all = !git rm --cached -r . && git reset --hard && git status
 [color]
   ui = true
+[code]
+  editor = code --wait
 [merge]
-  tool = kdiff3
-[mergetool "kdiff3"]
-  path = C:/Program Files/KDiff3/kdiff3.exe
-  trustExitCode = false
+  tool = vscode
+[mergetool "vscode"]
+  cmd = code --wait $MERGED
 [diff]
-  guitool = kdiff3
-[difftool "kdiff3"]
-  path = C:/Program Files/KDiff3/kdiff3.exe
-  trustExitCode = false
+  guitool = vscode
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
